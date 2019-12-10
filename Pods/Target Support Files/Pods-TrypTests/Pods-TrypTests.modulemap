@@ -1,0 +1,6 @@
+framework module Pods_TrypTests {
+  umbrella header "Pods-TrypTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

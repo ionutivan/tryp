@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TripDetailViewController" customModule="Tryp" customModuleProvider="target">
+            <connections>
+                <outlet property="pilotImageView" destination="rJU-0b-iTZ" id="e2h-5W-y3H"/>
+                <outlet property="pilotNameLabel" destination="0SE-lX-rGm" id="Rnr-bQ-vht"/>
+                <outlet property="view" destination="V3M-at-SMc" id="2MM-tf-9Rr"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" interfaceStyle="dark" id="V3M-at-SMc">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="KRu-Gh-fvJ">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="DGh-1p-Ws1">
+                    <rect key="frame" x="24" y="108" width="366" height="72"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="rJU-0b-iTZ">
+                            <rect key="frame" x="0.0" y="0.0" width="72" height="72"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="72" id="Rdk-jn-UwX"/>
+                                <constraint firstAttribute="width" constant="72" id="wOG-0u-r38"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Admiral Ackbar" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0SE-lX-rGm">
+                            <rect key="frame" x="96" y="0.0" width="270" height="72"/>
+                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="32"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="rJU-0b-iTZ" firstAttribute="centerY" secondItem="DGh-1p-Ws1" secondAttribute="centerY" id="DGF-4w-Zwq"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="DGh-1p-Ws1" firstAttribute="leading" secondItem="V3M-at-SMc" secondAttribute="leading" constant="24" id="3xa-uz-feu"/>
+                <constraint firstItem="KRu-Gh-fvJ" firstAttribute="leading" secondItem="V3M-at-SMc" secondAttribute="leading" id="4g1-Aj-d6Y"/>
+                <constraint firstItem="DGh-1p-Ws1" firstAttribute="top" secondItem="die-DP-eej" secondAttribute="top" constant="20" id="TyR-HN-Iia"/>
+                <constraint firstAttribute="bottom" secondItem="KRu-Gh-fvJ" secondAttribute="bottom" id="Wx3-VC-xTS"/>
+                <constraint firstAttribute="trailing" secondItem="DGh-1p-Ws1" secondAttribute="trailing" constant="24" id="tZe-w3-LZL"/>
+                <constraint firstItem="KRu-Gh-fvJ" firstAttribute="top" secondItem="V3M-at-SMc" secondAttribute="top" id="ucG-Qo-cyi"/>
+                <constraint firstAttribute="trailing" secondItem="KRu-Gh-fvJ" secondAttribute="trailing" id="v9S-d6-qNc"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <viewLayoutGuide key="safeArea" id="die-DP-eej"/>
+            <point key="canvasLocation" x="-81.159420289855078" y="125.89285714285714"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Background" width="1080" height="1920"/>
+    </resources>
+</document>

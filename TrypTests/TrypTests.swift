@@ -7,28 +7,59 @@
 //
 
 import XCTest
+import RxSwift
+import RxTest
 @testable import Tryp
 
 class TrypTests: XCTestCase {
+    
+    var scheduler: TestScheduler!
+    var disposeBag: DisposeBag!
+    var viewModel : TripListViewModel!
+    var mockApi: MockTripApi!
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        super.setUp()
+        self.scheduler = TestScheduler(initialClock: 0)
+        self.disposeBag = DisposeBag()
+//        let mockAPI = MockTripApi(result: Swift.Result.success([]))
+        let mockAPI = MockTripApi(result: Swift.Result.failure(TripAPI.Errors.requestFailed))
+        self.viewModel = TripListViewModel(api: mockAPI)
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        self.viewModel = nil
+        
+        super.tearDown()
     }
 
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+        mockApi = MockTripApi(result: Swift.Result.failure(TripAPI.Errors.requestFailed))
+        
+        // create testable observers
+        let trips = scheduler.createObserver([Trip].self)
+        let errorMessage = scheduler.createObserver(String.self)
+        
+        viewModel.output.errorMessage
+            .drive(errorMessage)
+            .disposed(by: disposeBag)
+        
+        viewModel.output.trips
+            .drive(trips)
+            .disposed(by: disposeBag)
+        
+        // when fetching the service
+        scheduler.createColdObservable([.next(10, ())])
+            .bind(to: viewModel.input.reload)
+            .disposed(by: disposeBag)
+        scheduler.start()
+        
+        // expected error message
+        print("bsd")
+        print(trips.events)
+        
+        XCTAssertEqual(errorMessage.events, [.next(10, "The operation couldn’t be completed. (Tryp.TripAPI.Errors error 0.)")])
+        
     }
 
 }
