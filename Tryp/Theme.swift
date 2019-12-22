@@ -23,7 +23,7 @@ struct Theme {
     struct Colors {
         
         static var black30 = UIColor(red:0.0, green:0.0, blue:0.0, alpha:0.3)
-        static var warmGrey = UIColor(red:151.0, green:151.0, blue:151.0, alpha:1)
-        static var warmGreyTwo = UIColor(red:129.0, green:129.0, blue:129.0, alpha:1)
+        static var warmGrey = UIColor(red:151.0/255.0, green:151.0/255.0, blue:151.0/255.0, alpha:1)
+        static var warmGreyTwo = UIColor(red:129.0/255.0, green:129.0/255.0, blue:129.0/255.0, alpha:1)
     }
 }
