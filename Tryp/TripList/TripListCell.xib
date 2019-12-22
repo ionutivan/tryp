@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,7 +12,7 @@
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TripListCell" rowHeight="83" id="I7u-Cr-D7R" customClass="TripListCell" customModule="Tryp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="83"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="I7u-Cr-D7R" id="WCM-qq-AZR">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="I7u-Cr-D7R" id="WCM-qq-AZR">
                 <rect key="frame" x="0.0" y="0.0" width="414" height="83"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -124,7 +124,7 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="hVy-NR-lD6" firstAttribute="leading" secondItem="WCM-qq-AZR" secondAttribute="leading" constant="16" id="7XE-o5-COW"/>
-                    <constraint firstAttribute="bottom" secondItem="hVy-NR-lD6" secondAttribute="bottom" constant="16" id="B9G-db-Ysd"/>
+                    <constraint firstAttribute="bottom" secondItem="hVy-NR-lD6" secondAttribute="bottom" priority="999" constant="16" id="B9G-db-Ysd"/>
                     <constraint firstItem="Dnu-jz-VKD" firstAttribute="leading" secondItem="hVy-NR-lD6" secondAttribute="trailing" constant="16" id="FT2-pC-qyD"/>
                     <constraint firstItem="hVy-NR-lD6" firstAttribute="centerY" secondItem="Dnu-jz-VKD" secondAttribute="centerY" id="I5N-Fm-mUD"/>
                     <constraint firstItem="hVy-NR-lD6" firstAttribute="top" secondItem="WCM-qq-AZR" secondAttribute="top" constant="16" id="lDN-s2-mXU"/>
