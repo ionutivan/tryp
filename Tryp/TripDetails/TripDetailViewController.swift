@@ -25,6 +25,7 @@ class TripDetailViewController: UIViewController {
     @IBOutlet weak var pickUpDateLabel: UILabel!
     @IBOutlet weak var dropOffDateLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
     
     convenience init(viewModel: TripDetailViewModel, trip: Trip) {
         self.init()
@@ -55,6 +56,7 @@ class TripDetailViewController: UIViewController {
         viewModel.output.pickUpDate.drive(pickUpDateLabel.rx.text).disposed(by: disposeBag)
         viewModel.output.dropOffDate.drive(dropOffDateLabel.rx.text).disposed(by: disposeBag)
         viewModel.output.tripDistance.drive(distanceLabel.rx.text).disposed(by: disposeBag)
+        viewModel.output.tripDuration.drive(durationLabel.rx.text).disposed(by: disposeBag)
         
         viewModel.input.trip.accept(trip)
     }

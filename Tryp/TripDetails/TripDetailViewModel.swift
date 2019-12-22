@@ -23,6 +23,13 @@ struct TripDetailViewModel {
         return formatter
     }()
     
+    private static var timeFormatter: DateComponentsFormatter = {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .short
+        formatter.allowedUnits = [.hour, .minute, .second]
+        return formatter
+    }()
+    
     let input: Input
     let output: Output
     
@@ -35,6 +42,7 @@ struct TripDetailViewModel {
         let pickUpDate: Driver<String?>
         let dropOffDate: Driver<String?>
         let tripDistance: Driver<String?>
+        let tripDuration: Driver<String?>
     }
     
     init() {
@@ -64,7 +72,13 @@ struct TripDetailViewModel {
             
         let tripDistance = Observable.zip(distance, distanceUnit) { "Distance: \($0) \($1)" }.asDriver(onErrorJustReturn: nil)
         
+        let duration = selectedTrip
+            .map{ TripDetailViewModel.timeFormatter.string(from: $0.duration) }
+            .filter{ $0 != nil }
+            .map{ "Duration: \($0!)" }
+            .asDriver(onErrorJustReturn: nil)
+        
         self.input = Input(trip: selectTrip)
-        self.output = Output(trip: sTrip, pickUpDate: pickUpDate, dropOffDate: dropOffDate, tripDistance: tripDistance)
+        self.output = Output(trip: sTrip, pickUpDate: pickUpDate, dropOffDate: dropOffDate, tripDistance: tripDistance, tripDuration: duration)
     }
 }

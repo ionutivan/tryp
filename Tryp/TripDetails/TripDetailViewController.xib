@@ -12,6 +12,7 @@
                 <outlet property="distanceLabel" destination="6dN-li-Icf" id="qZg-U0-1xp"/>
                 <outlet property="dropOffDateLabel" destination="5vn-XO-d9z" id="hGY-Ov-zKP"/>
                 <outlet property="dropOffPlanetLabel" destination="kg6-y1-RaF" id="gBO-N0-aR3"/>
+                <outlet property="durationLabel" destination="cjl-yY-T1b" id="nTa-ky-Bed"/>
                 <outlet property="pickUpDateLabel" destination="M8a-MI-iuq" id="t9l-Ui-hw8"/>
                 <outlet property="pickUpPointPlanetLabel" destination="zZW-1P-mv9" id="edk-PS-wnc"/>
                 <outlet property="pilotImageView" destination="rJU-0b-iTZ" id="e2h-5W-y3H"/>
@@ -112,6 +113,12 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjl-yY-T1b">
+                    <rect key="frame" x="24" y="448.5" width="38.5" height="18"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
@@ -119,10 +126,12 @@
                 <constraint firstItem="DGh-1p-Ws1" firstAttribute="leading" secondItem="V3M-at-SMc" secondAttribute="leading" constant="24" id="3xa-uz-feu"/>
                 <constraint firstItem="KRu-Gh-fvJ" firstAttribute="leading" secondItem="V3M-at-SMc" secondAttribute="leading" id="4g1-Aj-d6Y"/>
                 <constraint firstItem="ddC-hM-pRl" firstAttribute="leading" secondItem="die-DP-eej" secondAttribute="leading" constant="24" id="A8s-Wf-cz5"/>
+                <constraint firstItem="cjl-yY-T1b" firstAttribute="top" secondItem="6dN-li-Icf" secondAttribute="bottom" constant="20" id="ThX-zh-dSo"/>
                 <constraint firstItem="DGh-1p-Ws1" firstAttribute="top" secondItem="die-DP-eej" secondAttribute="top" constant="20" id="TyR-HN-Iia"/>
                 <constraint firstAttribute="bottom" secondItem="KRu-Gh-fvJ" secondAttribute="bottom" id="Wx3-VC-xTS"/>
                 <constraint firstItem="ddC-hM-pRl" firstAttribute="centerX" secondItem="die-DP-eej" secondAttribute="centerX" id="Xp1-uf-xfg"/>
                 <constraint firstItem="ddC-hM-pRl" firstAttribute="top" secondItem="DGh-1p-Ws1" secondAttribute="bottom" constant="90.5" id="hgr-ra-bpt"/>
+                <constraint firstItem="cjl-yY-T1b" firstAttribute="leading" secondItem="6dN-li-Icf" secondAttribute="leading" id="inZ-qh-597"/>
                 <constraint firstItem="6dN-li-Icf" firstAttribute="top" secondItem="ddC-hM-pRl" secondAttribute="bottom" constant="20" id="lcj-ly-AZb"/>
                 <constraint firstAttribute="trailing" secondItem="DGh-1p-Ws1" secondAttribute="trailing" constant="24" id="tZe-w3-LZL"/>
                 <constraint firstItem="KRu-Gh-fvJ" firstAttribute="top" secondItem="V3M-at-SMc" secondAttribute="top" id="ucG-Qo-cyi"/>
