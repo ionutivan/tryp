@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TripDetailViewController" customModule="Tryp" customModuleProvider="target">
             <connections>
+                <outlet property="distanceLabel" destination="6dN-li-Icf" id="qZg-U0-1xp"/>
                 <outlet property="dropOffDateLabel" destination="5vn-XO-d9z" id="hGY-Ov-zKP"/>
                 <outlet property="dropOffPlanetLabel" destination="kg6-y1-RaF" id="gBO-N0-aR3"/>
                 <outlet property="pickUpDateLabel" destination="M8a-MI-iuq" id="t9l-Ui-hw8"/>
@@ -47,28 +48,28 @@
                         <constraint firstItem="rJU-0b-iTZ" firstAttribute="centerY" secondItem="DGh-1p-Ws1" secondAttribute="centerY" id="DGF-4w-Zwq"/>
                     </constraints>
                 </stackView>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="ddC-hM-pRl">
-                    <rect key="frame" x="24" y="294" width="366" height="152"/>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="ddC-hM-pRl">
+                    <rect key="frame" x="24" y="294" width="366" height="96.5"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="HVb-09-hqw">
-                            <rect key="frame" x="0.0" y="0.0" width="172" height="152"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="HVb-09-hqw">
+                            <rect key="frame" x="0.0" y="0.0" width="172" height="96.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick up" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="p6l-qc-xaJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="58.5" height="108"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="58.5" height="20.5"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zZW-1P-mv9">
-                                    <rect key="frame" x="0.0" y="112" width="39" height="18"/>
+                                    <rect key="frame" x="0.0" y="40.5" width="39" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="M8a-MI-iuq">
-                                    <rect key="frame" x="0.0" y="134" width="31.5" height="18"/>
+                                    <rect key="frame" x="0.0" y="78.5" width="31.5" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -76,26 +77,26 @@
                                 </label>
                             </subviews>
                         </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" alignment="top" spacing="4" id="UFE-eq-JEc">
-                            <rect key="frame" x="172" y="0.0" width="194" height="152"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" alignment="top" spacing="20" id="UFE-eq-JEc">
+                            <rect key="frame" x="172" y="0.0" width="194" height="96"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drop off" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="POx-uc-oC9">
-                                    <rect key="frame" x="0.0" y="0.0" width="66" height="108"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="66" height="20.5"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kg6-y1-RaF">
-                                    <rect key="frame" x="0.0" y="112" width="39" height="18"/>
+                                    <rect key="frame" x="0.0" y="40.5" width="39" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5vn-XO-d9z">
-                                    <rect key="frame" x="0.0" y="134" width="31.5" height="18"/>
+                                    <rect key="frame" x="0.0" y="78.5" width="31.5" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -105,9 +106,16 @@
                         </stackView>
                     </subviews>
                 </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6dN-li-Icf">
+                    <rect key="frame" x="24" y="410.5" width="38.5" height="18"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="6dN-li-Icf" firstAttribute="leading" secondItem="die-DP-eej" secondAttribute="leading" constant="24" id="3Z0-0t-p3g"/>
                 <constraint firstItem="DGh-1p-Ws1" firstAttribute="leading" secondItem="V3M-at-SMc" secondAttribute="leading" constant="24" id="3xa-uz-feu"/>
                 <constraint firstItem="KRu-Gh-fvJ" firstAttribute="leading" secondItem="V3M-at-SMc" secondAttribute="leading" id="4g1-Aj-d6Y"/>
                 <constraint firstItem="ddC-hM-pRl" firstAttribute="leading" secondItem="die-DP-eej" secondAttribute="leading" constant="24" id="A8s-Wf-cz5"/>
@@ -115,6 +123,7 @@
                 <constraint firstAttribute="bottom" secondItem="KRu-Gh-fvJ" secondAttribute="bottom" id="Wx3-VC-xTS"/>
                 <constraint firstItem="ddC-hM-pRl" firstAttribute="centerX" secondItem="die-DP-eej" secondAttribute="centerX" id="Xp1-uf-xfg"/>
                 <constraint firstItem="ddC-hM-pRl" firstAttribute="top" secondItem="DGh-1p-Ws1" secondAttribute="bottom" constant="90.5" id="hgr-ra-bpt"/>
+                <constraint firstItem="6dN-li-Icf" firstAttribute="top" secondItem="ddC-hM-pRl" secondAttribute="bottom" constant="20" id="lcj-ly-AZb"/>
                 <constraint firstAttribute="trailing" secondItem="DGh-1p-Ws1" secondAttribute="trailing" constant="24" id="tZe-w3-LZL"/>
                 <constraint firstItem="KRu-Gh-fvJ" firstAttribute="top" secondItem="V3M-at-SMc" secondAttribute="top" id="ucG-Qo-cyi"/>
                 <constraint firstAttribute="trailing" secondItem="KRu-Gh-fvJ" secondAttribute="trailing" id="v9S-d6-qNc"/>
