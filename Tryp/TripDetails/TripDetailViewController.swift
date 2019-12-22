@@ -20,6 +20,10 @@ class TripDetailViewController: UIViewController {
     
     @IBOutlet weak var pilotNameLabel: UILabel!
     @IBOutlet weak var pilotImageView: UIImageView!
+    @IBOutlet weak var pickUpPointPlanetLabel: UILabel!
+    @IBOutlet weak var dropOffPlanetLabel: UILabel!
+    @IBOutlet weak var pickUpDateLabel: UILabel!
+    @IBOutlet weak var dropOffDateLabel: UILabel!
     
     convenience init(viewModel: TripDetailViewModel, trip: Trip) {
         self.init()
@@ -42,9 +46,13 @@ class TripDetailViewController: UIViewController {
                     let url = URL(string: baseURL.appending(trip.pilot.avatar)) {
                     self?.pilotImageView.kf.setImage(with: url)
                 }
-                
+                self?.pickUpPointPlanetLabel.text = trip?.pick_up.name
+                self?.dropOffPlanetLabel.text = trip?.drop_off.name
             })
             .disposed(by: disposeBag)
+        
+        viewModel.output.pickUpDate.drive(pickUpDateLabel.rx.text).disposed(by: disposeBag)
+        viewModel.output.dropOffDate.drive(dropOffDateLabel.rx.text).disposed(by: disposeBag)
         
         viewModel.input.trip.accept(trip)
     }
