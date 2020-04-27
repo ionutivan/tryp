@@ -18,3 +18,9 @@ class Coordinator {
         self.navigationController = navigationController
     }
 }
+
+protocol CoordinatorInterface {
+
+  func start()
+  
+}

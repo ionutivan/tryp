@@ -14,11 +14,12 @@ import Kingfisher
 class TripListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    let refreshControl: UIRefreshControl = UIRefreshControl()
     let cellIdentifier = "TripListCell"
     
     private var viewModel: TripListViewModel!
     private let disposeBag = DisposeBag()
-    
+    let api = TripAPI()
     convenience init(viewModel: TripListViewModel) {
         self.init()
         self.viewModel = viewModel
@@ -35,6 +36,7 @@ class TripListViewController: UIViewController {
         tableView.backgroundView = UIImageView(image: UIImage(named: "Background"))
         tableView.separatorColor = Theme.Colors.warmGrey
         tableView.separatorInset = .zero
+      tableView.refreshControl = refreshControl
         bindViews()
     }
     
@@ -64,10 +66,22 @@ class TripListViewController: UIViewController {
         tableView.rx.modelSelected(Trip.self)
             .subscribe(onNext: { [weak self] model in
                 
-                self?.viewModel.input.selectTrip.accept(model) })
+                self?.viewModel.output.selectTrip.accept(model)
+              if let selectedIndexPath = self?.tableView.indexPathForSelectedRow {
+                self?.tableView.deselectRow(at: selectedIndexPath, animated: true)
+              }
+            }
+        )
             .disposed(by: disposeBag)
-        
-        viewModel.input.reload.accept(())
+      
+      refreshControl.rx.controlEvent(.valueChanged)
+        .delay(.seconds(3), scheduler: MainScheduler.instance)
+        .subscribe(onNext: { [weak self] in
+          self?.refreshControl.endRefreshing()
+          self?.viewModel.input.reload.accept(true)
+        })
+        .disposed(by: disposeBag)
+  
     }
     
     func showError(_ errorMessage: String) {

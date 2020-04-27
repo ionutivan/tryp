@@ -17,36 +17,34 @@ final class TripListViewModel {
     let output: Output
     
     struct Input {
-        let reload: PublishRelay<Void>
-        let selectTrip: PublishRelay<Trip?>
+        let reload: PublishRelay<Bool>
     }
     
     struct Output {
         let trips: Driver<[Trip]>
         let errorMessage: Driver<String>
-        let selectedTrip: Driver<Trip?>
+        let selectTrip: PublishRelay<Trip?>
     }
     
-    init(api: TripAPIProtocol) {
+    init(api: TripAPI) {
 
         let errorRelay = PublishRelay<String>()
-        let reloadRelay = PublishRelay<Void>()
+        let reloadRelay = PublishRelay<Bool>()
         let selectTrip = PublishRelay<Trip?>()
         
-        let trips = reloadRelay
-            .asObservable()
-            .flatMapLatest({ api.trips() })
-            .asDriver{ (error) -> Driver<[Trip]> in
-                errorRelay.accept((error as? TripAPI.Errors)?.localizedDescription ?? error.localizedDescription)
+      let trips = reloadRelay
+        .flatMap { _ in
+              return api.getTrips()
+                      }
+      
+            .asDriver { (error) -> Driver<[Trip]> in
                 return Driver.just([])
             }
         
-        let selectedTrip = selectTrip.asDriver(onErrorJustReturn: nil)
-        
-        self.input = Input(reload: reloadRelay, selectTrip: selectTrip)
+        self.input = Input(reload: reloadRelay)
         self.output = Output(trips: trips,
                              errorMessage: errorRelay.asDriver(onErrorJustReturn: "An error happened"),
-                             selectedTrip: selectedTrip)
+                             selectTrip: selectTrip)
     }
     
     

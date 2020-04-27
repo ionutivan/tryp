@@ -14,7 +14,7 @@ import Alamofire
 typealias JSONObject = [String: Any]
 
 protocol TripAPIProtocol {
-    func trips() -> Observable<[Trip]>
+    func getTrips() -> Observable<[Trip]>
 }
 
 class MockTripApi: TripAPIProtocol {
@@ -25,7 +25,7 @@ class MockTripApi: TripAPIProtocol {
         self.result = result
     }
     
-    func trips() -> Observable<[Trip]> {
+    func getTrips() -> Observable<[Trip]> {
         return Observable.create { [weak self] observer in
             switch self?.result {
             case .success(let trips):
@@ -68,30 +68,42 @@ struct TripAPI: TripAPIProtocol {
         case requestFailed
         case failedJSONParsing
     }
-    
-    func trips() -> Observable<[Trip]> {
-        return Observable.create { observer in
-            let request = Alamofire.request(Address.tripsList.url)
-            request.responseJSON { response in
-                
-                guard response.error == nil, let data = response.data else {
-                        observer.onError(Errors.requestFailed)
-                        return
-                }
-                
-                guard let json = try? JSONDecoder().decode([Trip].self, from: data) else {
-                    observer.onError(Errors.failedJSONParsing)
-                    return
-                }
-                
-                observer.onNext(json)
-                observer.onCompleted()
-            }
-        
-            return Disposables.create {
-                request.cancel()
-            }
+  
+  func getTrips() -> Observable<[Trip]> {
+    return buildRequest(url: Address.tripsList.url)
+      .map { data in
+        let decoder = JSONDecoder()
+        do {
+          let trips = try decoder.decode([Trip].self, from: data)
+          return trips
+        } catch {
+          throw Errors.failedJSONParsing
         }
     }
+  }
+  
+  func buildRequest(url: URL) -> Observable<Data> {
+    let request: Observable<URLRequest> = Observable.create() { observer in
+      var request = URLRequest(url: url)
+      request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+      
+      observer.onNext(request)
+      observer.onCompleted()
+      
+      return Disposables.create()
+    }
+    
+    let session = URLSession.shared
+    return request.flatMap() { request in
+      return session.rx.response(request: request).map() { response, data in
+        switch response.statusCode {
+        case 200 ..< 300:
+          return data
+        default:
+          throw Errors.requestFailed
+        }
+      }
+    }
+  }
     
 }
