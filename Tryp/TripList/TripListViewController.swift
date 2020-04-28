@@ -13,8 +13,20 @@ import Kingfisher
 
 class TripListViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
-    let refreshControl: UIRefreshControl = UIRefreshControl()
+  @IBOutlet weak var tableView: UITableView! {
+    didSet {
+      let nib = UINib(nibName: cellIdentifier, bundle: nil)
+      tableView.register(nib, forCellReuseIdentifier: cellIdentifier)
+      tableView.rowHeight = UITableView.automaticDimension
+      tableView.estimatedRowHeight = 44
+      tableView.backgroundView = UIImageView(image: UIImage(named: "Background"))
+      tableView.separatorColor = Theme.Colors.warmGrey
+      tableView.separatorInset = .zero
+      tableView.refreshControl = refreshControl
+    }
+  }
+
+    let refreshControl = UIRefreshControl()
     let cellIdentifier = "TripListCell"
     
     private var viewModel: TripListViewModel!
@@ -26,17 +38,8 @@ class TripListViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
-        let nib = UINib(nibName: cellIdentifier, bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: cellIdentifier)
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 44
-        tableView.backgroundView = UIImageView(image: UIImage(named: "Background"))
-        tableView.separatorColor = Theme.Colors.warmGrey
-        tableView.separatorInset = .zero
-      tableView.refreshControl = refreshControl
         bindViews()
     }
     
