@@ -13,18 +13,19 @@ import Kingfisher
 
 class TripListViewController: UIViewController {
     
-  @IBOutlet weak var tableView: UITableView! {
-    didSet {
-      let nib = UINib(nibName: cellIdentifier, bundle: nil)
-      tableView.register(nib, forCellReuseIdentifier: cellIdentifier)
-      tableView.rowHeight = UITableView.automaticDimension
-      tableView.estimatedRowHeight = 44
-      tableView.backgroundView = UIImageView(image: UIImage(named: "Background"))
-      tableView.separatorColor = Theme.Colors.warmGrey
-      tableView.separatorInset = .zero
-      tableView.refreshControl = refreshControl
-    }
-  }
+  lazy var tableView: UITableView! = {
+    let tableView = UITableView()
+    let nib = UINib(nibName: cellIdentifier, bundle: nil)
+    tableView.register(nib, forCellReuseIdentifier: cellIdentifier)
+    tableView.rowHeight = UITableView.automaticDimension
+    tableView.estimatedRowHeight = 44
+    tableView.backgroundView = UIImageView(image: UIImage(named: "Background"))
+    tableView.separatorColor = Theme.Colors.warmGrey
+    tableView.separatorInset = .zero
+    tableView.refreshControl = refreshControl
+    tableView.translatesAutoresizingMaskIntoConstraints = false
+    return tableView
+  }()
 
     let refreshControl = UIRefreshControl()
     let cellIdentifier = "TripListCell"
@@ -38,10 +39,23 @@ class TripListViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+      super.viewDidLoad()
+      
+      view.addSubview(tableView)
+      
+      constraintInit()
         
-        bindViews()
+      bindViews()
     }
+  
+  func constraintInit() {
+    NSLayoutConstraint.activate([
+      tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+      tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+      tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+    ])
+  }
     
     func bindViews() {
         
@@ -84,6 +98,8 @@ class TripListViewController: UIViewController {
           self?.viewModel.input.reload.accept(true)
         })
         .disposed(by: disposeBag)
+      
+      viewModel.input.reload.accept(true)
   
     }
     

@@ -16,7 +16,6 @@
 		C60CD2D42398F5E30001C497 /* TripListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60CD2D32398F5E30001C497 /* TripListViewController.swift */; };
 		C60CD2D6239ADD940001C497 /* TripAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60CD2D5239ADD940001C497 /* TripAPI.swift */; };
 		C60CD2DC239C611D0001C497 /* TripListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C60CD2DB239C611D0001C497 /* TripListCell.xib */; };
-		C60CD2DE239C63B80001C497 /* TripListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C60CD2DD239C63B80001C497 /* TripListViewController.xib */; };
 		C60CD2E0239DA70C0001C497 /* TripDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60CD2DF239DA70C0001C497 /* TripDetailCoordinator.swift */; };
 		C60CD2E2239DA75A0001C497 /* TripDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60CD2E1239DA75A0001C497 /* TripDetailViewModel.swift */; };
 		C60CD2E4239DA78E0001C497 /* TripDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60CD2E3239DA78E0001C497 /* TripDetailViewController.swift */; };
@@ -56,7 +55,6 @@
 		C60CD2D32398F5E30001C497 /* TripListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripListViewController.swift; sourceTree = "<group>"; };
 		C60CD2D5239ADD940001C497 /* TripAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripAPI.swift; sourceTree = "<group>"; };
 		C60CD2DB239C611D0001C497 /* TripListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TripListCell.xib; sourceTree = "<group>"; };
-		C60CD2DD239C63B80001C497 /* TripListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TripListViewController.xib; sourceTree = "<group>"; };
 		C60CD2DF239DA70C0001C497 /* TripDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailCoordinator.swift; sourceTree = "<group>"; };
 		C60CD2E1239DA75A0001C497 /* TripDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailViewModel.swift; sourceTree = "<group>"; };
 		C60CD2E3239DA78E0001C497 /* TripDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailViewController.swift; sourceTree = "<group>"; };
@@ -121,7 +119,6 @@
 				C60CD2CF2398F03C0001C497 /* TripListViewModel.swift */,
 				C60CD2E7239FA0860001C497 /* TripListCell.swift */,
 				C60CD2D32398F5E30001C497 /* TripListViewController.swift */,
-				C60CD2DD239C63B80001C497 /* TripListViewController.xib */,
 				C60CD2DB239C611D0001C497 /* TripListCell.xib */,
 				C60CD2EB239FE7500001C497 /* StarView.swift */,
 			);
@@ -281,7 +278,6 @@
 			files = (
 				C60CD2E6239E5FFD0001C497 /* TripDetailViewController.xib in Resources */,
 				C60CD2DC239C611D0001C497 /* TripListCell.xib in Resources */,
-				C60CD2DE239C63B80001C497 /* TripListViewController.xib in Resources */,
 				C6F9A4302397E1A4004C4F51 /* Assets.xcassets in Resources */,
 				C6F9A4332397E1A4004C4F51 /* LaunchScreen.storyboard in Resources */,
 			);
