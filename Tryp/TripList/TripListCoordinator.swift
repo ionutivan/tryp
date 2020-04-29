@@ -24,7 +24,7 @@ extension TripListCoordinator: CoordinatorInterface {
       viewController.title = "LAST TRIPS"
       navigationController?.pushViewController(viewController, animated: true)
       
-    viewModel.output.selectTrip.asDriver(onErrorJustReturn: nil).drive(onNext: { [weak self] trip in
+    viewModel.selectTrip.asDriver(onErrorJustReturn: nil).drive(onNext: { [weak self] trip in
           let coordinator = TripDetailCoordinator(navigationController: self?.navigationController, trip: trip!)
           coordinator.start()
           self?.childCoordinators.append(coordinator)

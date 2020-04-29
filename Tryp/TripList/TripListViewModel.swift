@@ -13,39 +13,32 @@ import RxCocoa
 
 final class TripListViewModel {
     
-    let input: Input
-    let output: Output
+  private let api: TripAPI
+  private let bag = DisposeBag()
     
-    struct Input {
-        let reload: PublishRelay<Bool>
-    }
+    //input
+        let reload = PublishRelay<Bool>()
     
-    struct Output {
-        let trips: Driver<[Trip]>
-        let errorMessage: Driver<String>
-        let selectTrip: PublishRelay<Trip?>
-    }
+    
+    //output
+        let trips = PublishRelay<[Trip]>()
+        let errorMessage = PublishRelay<String>()
+        let selectTrip = PublishRelay<Trip?>()
+    
     
     init(api: TripAPI) {
-
-        let errorRelay = PublishRelay<String>()
-        let reloadRelay = PublishRelay<Bool>()
-        let selectTrip = PublishRelay<Trip?>()
-        
-      let trips = reloadRelay
-        .flatMap { _ in
-              return api.getTrips()
-                      }
-      
-            .asDriver { (error) -> Driver<[Trip]> in
-                return Driver.just([])
-            }
-        
-        self.input = Input(reload: reloadRelay)
-        self.output = Output(trips: trips,
-                             errorMessage: errorRelay.asDriver(onErrorJustReturn: "An error happened"),
-                             selectTrip: selectTrip)
+      self.api = api
     }
+  
+  func getTrips() {
+    self.api.getTrips()
+      .subscribe(onNext:{ trips in
+        self.trips.accept(trips)
+      }, onError: { [weak self] error in
+        self?.errorMessage.accept(error.localizedDescription)
+      })
+    .disposed(by: bag)
+  }
     
     
 }
