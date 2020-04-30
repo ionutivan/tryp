@@ -62,18 +62,10 @@ class TripListViewController: UIViewController {
       viewModel.output.trips
         .observeOn(MainScheduler.instance)
         .bind(to: self.tableView.rx.items(cellIdentifier: cellIdentifier, cellType: TripListCell.self)) { (row, item, cell) in
-                cell.pilotNameLabel?.text = item.pilot.name
-                cell.dropOffNameLabel?.text = item.drop_off.name
-                cell.pickUpNameLabel?.text = item.pick_up.name
-                if let url = URL(string: baseURL.appending(item.pilot.avatar)) {
-                    cell.pilotImageView.kf.setImage(with: url)
-                }
-                Int(item.pilot.rating) == 0 ?
-                    cell.hideStarView() :
-                    cell.starView.color(for: item.pilot.rating)
-                
-            }
-            .disposed(by: disposeBag)
+          let viewModel = TripCellViewModel(item: item)
+          cell.viewModel = viewModel
+          }
+          .disposed(by: disposeBag)
         
       viewModel.output.errorMessage.observeOn(MainScheduler.instance).asObservable().subscribe(onNext:  { [weak self] errorMessage in
                 guard let strongSelf = self else { return }

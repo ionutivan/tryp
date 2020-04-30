@@ -23,6 +23,7 @@
 		C60CD2E8239FA0860001C497 /* TripListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60CD2E7239FA0860001C497 /* TripListCell.swift */; };
 		C60CD2EC239FE7500001C497 /* StarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60CD2EB239FE7500001C497 /* StarView.swift */; };
 		C60CD2F023A01B980001C497 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60CD2EF23A01B980001C497 /* Theme.swift */; };
+		C6ABADA3245B431900CA8AD0 /* TripCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ABADA2245B431900CA8AD0 /* TripCellViewModel.swift */; };
 		C6F9A42E2397E1A1004C4F51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F9A42D2397E1A1004C4F51 /* AppDelegate.swift */; };
 		C6F9A4302397E1A4004C4F51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6F9A42F2397E1A4004C4F51 /* Assets.xcassets */; };
 		C6F9A4332397E1A4004C4F51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6F9A4312397E1A4004C4F51 /* LaunchScreen.storyboard */; };
@@ -62,6 +63,7 @@
 		C60CD2E7239FA0860001C497 /* TripListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripListCell.swift; sourceTree = "<group>"; };
 		C60CD2EB239FE7500001C497 /* StarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarView.swift; sourceTree = "<group>"; };
 		C60CD2EF23A01B980001C497 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		C6ABADA2245B431900CA8AD0 /* TripCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCellViewModel.swift; sourceTree = "<group>"; };
 		C6F9A42A2397E1A1004C4F51 /* Tryp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tryp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6F9A42D2397E1A1004C4F51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6F9A42F2397E1A4004C4F51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				C60CD2CD2397FD460001C497 /* TripListCoordinator.swift */,
 				C60CD2CF2398F03C0001C497 /* TripListViewModel.swift */,
 				C60CD2E7239FA0860001C497 /* TripListCell.swift */,
+				C6ABADA2245B431900CA8AD0 /* TripCellViewModel.swift */,
 				C60CD2D32398F5E30001C497 /* TripListViewController.swift */,
 				C60CD2DB239C611D0001C497 /* TripListCell.xib */,
 				C60CD2EB239FE7500001C497 /* StarView.swift */,
@@ -379,6 +382,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C60CD2E0239DA70C0001C497 /* TripDetailCoordinator.swift in Sources */,
+				C6ABADA3245B431900CA8AD0 /* TripCellViewModel.swift in Sources */,
 				C60CD2D22398F0EE0001C497 /* Trip.swift in Sources */,
 				C60CD2EC239FE7500001C497 /* StarView.swift in Sources */,
 				C60CD2D6239ADD940001C497 /* TripAPI.swift in Sources */,

@@ -9,6 +9,12 @@
 import UIKit
 
 class TripListCell: UITableViewCell {
+  
+  var viewModel: TripCellViewModel? {
+    didSet {
+      bindViewModel()
+    }
+  }
     
     @IBOutlet weak var pilotNameLabel: UILabel!
     @IBOutlet weak var pilotImageView: UIImageView!
@@ -25,6 +31,21 @@ class TripListCell: UITableViewCell {
         pickUpNameLabel.textColor = Theme.Colors.warmGreyTwo
         dropOffNameLabel.textColor = Theme.Colors.warmGreyTwo
     }
+  
+  func bindViewModel() {
+    if let viewModel = viewModel {
+      pilotNameLabel?.text = viewModel.pilotName
+      dropOffNameLabel?.text = viewModel.dropOffName
+      pickUpNameLabel?.text = viewModel.pickupName
+      if let url = viewModel.pilotImageViewURL {
+          pilotImageView.kf.setImage(with: url)
+      }
+      Int(viewModel.rating) == 0 ?
+        hideStarView() :
+        starView.color(for: viewModel.rating)
+    }
+    
+  }
     
     func hideStarView() {
         mainContentStackView.removeArrangedSubview(starView)
