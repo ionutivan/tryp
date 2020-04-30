@@ -15,27 +15,33 @@ final class TripListViewModel {
     
   private let api: TripAPI
   private let bag = DisposeBag()
-    
-    //input
-        let reload = PublishRelay<Bool>()
-    
-    
-    //output
-        let trips = PublishRelay<[Trip]>()
-        let errorMessage = PublishRelay<String>()
-        let selectTrip = PublishRelay<Trip?>()
+  private(set) var input: Input
+  private(set) var output: Output
+  
+  struct Input {
+    let reload = PublishRelay<Bool>()
+  }
+      
+  struct Output {
+    let trips = PublishRelay<[Trip]>()
+    let errorMessage = PublishRelay<String>()
+    let selectTrip = PublishRelay<Trip?>()
+  }
+        
     
     
     init(api: TripAPI) {
       self.api = api
+      self.input = Input()
+      self.output = Output()
     }
   
   func getTrips() {
     self.api.getTrips()
       .subscribe(onNext:{ trips in
-        self.trips.accept(trips)
+        self.output.trips.accept(trips)
       }, onError: { [weak self] error in
-        self?.errorMessage.accept(error.localizedDescription)
+        self?.output.errorMessage.accept(error.localizedDescription)
       })
     .disposed(by: bag)
   }

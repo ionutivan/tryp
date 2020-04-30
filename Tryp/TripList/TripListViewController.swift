@@ -59,7 +59,7 @@ class TripListViewController: UIViewController {
     
     func bindViews() {
         
-      viewModel.trips
+      viewModel.output.trips
         .observeOn(MainScheduler.instance)
         .bind(to: self.tableView.rx.items(cellIdentifier: cellIdentifier, cellType: TripListCell.self)) { (row, item, cell) in
                 cell.pilotNameLabel?.text = item.pilot.name
@@ -75,7 +75,7 @@ class TripListViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-      viewModel.errorMessage.observeOn(MainScheduler.instance).asObservable().subscribe(onNext:  { [weak self] errorMessage in
+      viewModel.output.errorMessage.observeOn(MainScheduler.instance).asObservable().subscribe(onNext:  { [weak self] errorMessage in
                 guard let strongSelf = self else { return }
                 strongSelf.showError(errorMessage)
             })
@@ -84,7 +84,7 @@ class TripListViewController: UIViewController {
         tableView.rx.modelSelected(Trip.self)
             .subscribe(onNext: { [weak self] model in
                 
-                self?.viewModel.selectTrip.accept(model)
+              self?.viewModel.output.selectTrip.accept(model)
               if let selectedIndexPath = self?.tableView.indexPathForSelectedRow {
                 self?.tableView.deselectRow(at: selectedIndexPath, animated: true)
               }
@@ -96,7 +96,7 @@ class TripListViewController: UIViewController {
         .delay(.seconds(3), scheduler: MainScheduler.instance)
         .subscribe(onNext: { [weak self] in
           self?.refreshControl.endRefreshing()
-          self?.viewModel.reload.accept(true)
+          self?.viewModel.input.reload.accept(true)
         })
         .disposed(by: disposeBag)
       
