@@ -41,18 +41,17 @@ class TripDetailViewController: UIViewController {
     }
     
     func bindViews() {
-        viewModel.output.trip
-            .drive(onNext: { [weak self] (trip) in
-                self?.pilotNameLabel.text = trip?.pilot.name
-                if let trip = trip,
-                    let url = URL(string: baseURL.appending(trip.pilot.avatar)) {
+        viewModel.output.pilotImageURL
+            .drive(onNext: { [weak self] url in
+                if let url = url {
                     self?.pilotImageView.kf.setImage(with: url)
                 }
-                self?.pickUpPointPlanetLabel.text = trip?.pick_up.name
-                self?.dropOffPlanetLabel.text = trip?.drop_off.name
             })
             .disposed(by: disposeBag)
         
+      viewModel.output.pickUpPlanet.drive(pickUpPointPlanetLabel.rx.text).disposed(by: disposeBag)
+      viewModel.output.dropOffPlanet.drive(dropOffPlanetLabel.rx.text).disposed(by: disposeBag)
+      viewModel.output.pilotName.drive(pilotNameLabel.rx.text).disposed(by: disposeBag)
         viewModel.output.pickUpDate.drive(pickUpDateLabel.rx.text).disposed(by: disposeBag)
         viewModel.output.dropOffDate.drive(dropOffDateLabel.rx.text).disposed(by: disposeBag)
         viewModel.output.tripDistance.drive(distanceLabel.rx.text).disposed(by: disposeBag)

@@ -38,11 +38,14 @@ struct TripDetailViewModel {
     }
     
     struct Output {
-        let trip: Driver<Trip?>
         let pickUpDate: Driver<String?>
         let dropOffDate: Driver<String?>
         let tripDistance: Driver<String?>
         let tripDuration: Driver<String?>
+      let pickUpPlanet: Driver<String?>
+      let dropOffPlanet: Driver<String?>
+      let pilotImageURL: Driver<URL?>
+      let pilotName: Driver<String?>
     }
     
     init() {
@@ -50,7 +53,7 @@ struct TripDetailViewModel {
         let selectTrip = PublishRelay<Trip>()
         
         let selectedTrip = selectTrip.share()
-        let sTrip = selectedTrip.map{ $0 as Trip? }.asDriver(onErrorJustReturn: nil)
+        
         let pickUpDate = selectedTrip
             .map{ TripDetailViewModel.isoDateFormatter.date(from: $0.pick_up.date) }
             .filter{ $0 != nil }
@@ -77,8 +80,32 @@ struct TripDetailViewModel {
             .filter{ $0 != nil }
             .map{ "Duration: \($0!)" }
             .asDriver(onErrorJustReturn: nil)
+      
+      let pickUpPlanet = selectedTrip
+        .map { $0.pick_up.name }
+        .asDriver(onErrorJustReturn: nil)
+      
+      let dropOffPlanet = selectedTrip
+        .map { $0.drop_off.name }
+        .asDriver(onErrorJustReturn: nil)
+      
+      let pilotImageURL = selectedTrip
+        .map { URL(string: baseURL.appending($0.pilot.avatar)) }
+        .filter{ $0 != nil }
+        .asDriver(onErrorJustReturn: nil)
+      
+      let pilotName = selectedTrip
+        .map { $0.pilot.name }
+        .asDriver(onErrorJustReturn: nil)
         
         self.input = Input(trip: selectTrip)
-        self.output = Output(trip: sTrip, pickUpDate: pickUpDate, dropOffDate: dropOffDate, tripDistance: tripDistance, tripDuration: duration)
+        self.output = Output(pickUpDate: pickUpDate,
+                             dropOffDate: dropOffDate,
+                             tripDistance: tripDistance,
+                             tripDuration: duration,
+                             pickUpPlanet: pickUpPlanet,
+                             dropOffPlanet: dropOffPlanet,
+                             pilotImageURL: pilotImageURL,
+                             pilotName: pilotName)
     }
 }
