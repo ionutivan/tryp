@@ -15,8 +15,7 @@ class TripListViewController: UIViewController {
     
   lazy var tableView: UITableView! = {
     let tableView = UITableView()
-    let nib = UINib(nibName: cellIdentifier, bundle: nil)
-    tableView.register(nib, forCellReuseIdentifier: cellIdentifier)
+    tableView.register(TripListCell.self, forCellReuseIdentifier: cellIdentifier)
     tableView.rowHeight = UITableView.automaticDimension
     tableView.estimatedRowHeight = 44
     tableView.backgroundView = UIImageView(image: UIImage(named: "Background"))
